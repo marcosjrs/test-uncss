@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/marcosjrs/test-uncss#readme",
   "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^9.0.0",
+    "postcss-uncss": "^0.17.0",
     "uncss": "^0.17.3"
   }
 }

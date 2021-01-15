@@ -107,3 +107,36 @@ Ejemplo de salida por consola:
 
 
 
+# Para ejecutar tarea gulp
+
+Instalé  con permisos de administrador:
+```
+npm install -g gulp --force
+npm install -g gulp-cli --force
+npm install gulp-postcss postcss-uncss
+```
+
+Se creó el gulpfile.js
+```
+var gulp = require('gulp');
+var postcss = require('gulp-postcss');
+var uncss = require('postcss-uncss');
+
+gulp.task('limpieza', function () {
+    var plugins = [
+        uncss({
+            html: ['ejemplo_carpeta_publica/*.html']
+        }),
+    ];
+    return gulp.src('./ejemplo_carpeta_publica/css/*.css')
+        .pipe(postcss(plugins))
+        .pipe(gulp.dest('./ejemplo_carpeta_publica/css_limpios'));
+});
+```
+
+Se ejecutó:
+```
+gulp limpieza
+```
+Lo anterior creará un archivo css, ya "limpiado", es decir se comprueban los usos en todos los html de la carpeta ejemplo_carpeta_publica, y aquellos que no se usen, no aparecerán en el nuevo css:
+ejemplo_carpeta_publica/css_limpios/muchos-css-no-usados.css  (igual el nombre ya no es el apropiado)
